@@ -12,9 +12,14 @@ class Actividad_1():
         # El get()método envía una solicitud de GET a la url especificada.
         response = requests.get(url)
         return response.json()
+
+    def escribir_json(self,ruta="src/static/json/actividad2.json",data="https://jsonplaceholder.typicode.com/albums"):
+        with open(ruta,'w',) as f:
+            json.dump(data,f)
+
     
-    def escribir_json(self):
-        pass
+
+        
 
     #def escribir_txt(self,nombre_archivo="",datos=object):
     def escribir_txt(self,nombre_archivo="",datos=None): # "" '' """ """
