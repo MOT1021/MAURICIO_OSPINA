@@ -53,6 +53,7 @@ class Ingestiones():
         with open(ruta_json,"r",encoding="utf-8") as f:
             datos = json.load(f)
         return datos    
+    
 
 
     def leer_txt(self):
@@ -89,7 +90,7 @@ class Ingestiones():
     def  leer_bd(self,nombre_bd="",servidor="",puerto=0000):
         pass
     
-    def  leer_api(self,url="https://jsonplaceholder.typicode.com/todos"):
+    def  leer_api(self,url=""):
         pass
     
     def escribir_txt(self,nombre,datos):
