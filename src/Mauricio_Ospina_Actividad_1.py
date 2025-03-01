@@ -77,7 +77,7 @@ if ingestion.escribir_txt(nombre_archivo="entrega_actividad_1.txt",datos=datos_j
 print("esta es la ruta statica :",ingestion.ruta_static)
 
 for n in  range(0,10):
-    ingestion.graficar_rectas(5, n, 5.4) 
+    ingestion.graficar_rectas(30, n, 60) 
     
 # Llamamos a la función para escribir el archivo JSON.escribir_json(ruta_archivo, datos)
     
