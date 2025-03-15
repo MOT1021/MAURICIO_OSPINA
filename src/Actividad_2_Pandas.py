@@ -14,15 +14,21 @@ class actividad2:
             os.makedirs(self.ruta_ejercicios)
 
     def punto_1(self):
-        array_10_20 = np.arange(10, 20)
+        array_10_29 = np.arange(10, 29)
 
-        for i, val in enumerate(array_10_20):
+        for i, val in enumerate(array_10_29):
             self.df.loc[i] = [1, val]
 
         # Guardar archivo Excel 
         ruta_excel = os.path.join(self.ruta_ejercicios, "Actividad_2.xlsx")
         self.df.to_excel(ruta_excel, index=False)
         print(f"Excel guardado en: {ruta_excel}")
+        
+    def punto_2(self):
+        array_10x10 = np.ones((10, 10))
+        suma_total = np.sum(array_10x10)
+        print(suma_total)
+     
 
     def punto_11(self, num=100):
         x = np.random.rand(num)
@@ -36,7 +42,5 @@ class actividad2:
 
 # instancia de la clase y ejecuta
 act = actividad2()
-act.punto_11()
-
-ene = actividad2()
-ene.punto_1()
+#act.punto_11()
+act.punto_2()
