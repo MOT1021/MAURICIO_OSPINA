@@ -12,6 +12,7 @@ setup(
         "kagglehub[pandas-datasets]>=0.3.8",
         "matplotlib>=3.5.0",
         "seaborn>=0.11.2",
+        "scipy",
         "pandas",
         "numpy",
         "openpyxl",

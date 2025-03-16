@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from scipy.stats import gaussian_kde
 
 class actividad2:
     def __init__(self):
@@ -20,14 +21,14 @@ class actividad2:
  
         self.ruta_raiz=os.path.abspath(os.getcwd())
         self.ruta_act2 = "{}/src/Ejercicios/".format(self.ruta_raiz)
-        print(self.ruta_raiz)
+        #print(self.ruta_raiz)
         #print(data)
         
     def punto_2(self):
         array_10x10 = np.ones((10, 10))
         suma_total = np.sum(array_10x10)
         self.df.iloc[1,1]= suma_total
-        print(suma_total)
+        #print(suma_total)
         self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
         print("se ejecutó - PUNTO 2")
         
@@ -38,8 +39,8 @@ class actividad2:
 
         # Realizar el producto elemento a elemento
         producto_elemento_a_elemento = array1 * array2
-        print("Array 1:", array1)
-        print("Array 2:", array2)
+        # print("Array 1:", array1)
+        # print("Array 2:", array2)
         print("Producto elemento a elemento:", producto_elemento_a_elemento)
         self.df.iloc[2,1]= str(producto_elemento_a_elemento)
         self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
@@ -51,7 +52,7 @@ class actividad2:
         inversa = np.linalg.inv(matriz)
         self.df.iloc[3,1]= str(inversa)
         self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
-        print("Matriz ",matriz)
+        # print("Matriz ",matriz)
         print("Matriz Inversa ",inversa)
         print("se ejecutó - PUNTO 4")
     
@@ -152,50 +153,151 @@ class actividad2:
         print(f"Imagen guardada en: {ruta}")
 
     def punto_13(self):
-        pass
+        x = np.linspace(-2 * np.pi, 2 * np.pi, 100)  # Valores de x desde -2π hasta 2π
+        y = np.linspace(-2 * np.pi, 2 * np.pi, 100)  # Valores de y desde -2π hasta 2π
+        X, Y = np.meshgrid(x, y)
+        Z = np.cos(X) + np.sin(Y)
+        plt.figure(figsize=(8, 6))
+        contour = plt.contourf(X, Y, Z, levels=50, cmap='viridis')  # levels: número de niveles de contorno
+        plt.colorbar(contour, label='Valor de z')  # Añadir una barra de color
+        plt.title('Gráfico de contorno de $z = \cos(x) + \sin(y)$')
+        plt.xlabel('$x$')
+        plt.ylabel('$y$')
+        ruta = "{}punto_13.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
     
     def punto_14(self):
-        pass
-    
+        np.random.seed(42)  # Fijar semilla para reproducibilidad
+        x = np.random.normal(0, 1, 1000)  # Coordenadas x aleatorias
+        y = np.random.normal(0, 1, 1000)  # Coordenadas y aleatorias
+        xy = np.vstack([x, y])  # Apilar x e y para calcular la densidad
+        z = gaussian_kde(xy)(xy)  # Calcular la densidad en cada punto
+        plt.figure(figsize=(8, 6))
+        scatter = plt.scatter(x, y, c=z, cmap='viridis', alpha=0.6, edgecolor='k')
+        cbar = plt.colorbar(scatter)
+        cbar.set_label('Densidad de puntos')
+        plt.title('Gráfico de dispersión con densidad de puntos')
+        plt.xlabel('$x$')
+        plt.ylabel('$y$')
+        ruta = "{}punto_14.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
+        
     def punto_15(self):
-        pass
-    
+        np.random.seed(42)  # Fijar semilla para reproducibilidad
+        x = np.random.normal(0, 1, 1000)  # Coordenadas x aleatorias
+        y = np.random.normal(0, 1, 1000)  # Coordenadas y aleatorias
+        xy = np.vstack([x, y])  # Apilar x e y para calcular la densidad
+        z = gaussian_kde(xy)(xy)  # Calcular la densidad en cada punto
+        plt.figure(figsize=(10, 8))
+        grid_x, grid_y = np.meshgrid(np.linspace(x.min(), x.max(), 100), np.linspace(y.min(), y.max(), 100))
+        grid_z = gaussian_kde(xy)(np.vstack([grid_x.ravel(), grid_y.ravel()])).reshape(grid_x.shape)
+        contour = plt.contourf(grid_x, grid_y, grid_z, levels=50, cmap='viridis')
+        plt.colorbar(contour, label='Densidad de puntos')  # Barra de color
+        plt.title('Gráfico de Dispersión con Densidad de Puntos', fontsize=14)
+        plt.xlabel('Eje $X$', fontsize=12)
+        plt.ylabel('Eje $Y$', fontsize=12)
+        plt.legend(loc='upper right', fontsize=12)
+        ruta = "{}punto_15.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
+            
     def punto_16(self):
-        pass
-    
+        datos = np.random.normal(0, 1, 1000)  # Media = 0, Desviación estándar = 1
+        plt.figure(figsize=(8, 6))
+        plt.hist(datos, bins=30, color='blue', edgecolor='black', alpha=0.7)
+        plt.title('Histograma de 1000 números aleatorios con distribución normal')
+        plt.xlabel('Valor')
+        plt.ylabel('Frecuencia')
+        plt.grid(True, linestyle='--', alpha=0.6)
+        ruta = "{}punto_16.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
+
     def punto_17(self):
-        pass
-    
+        datos1 = np.random.normal(0, 1, 1000)  # Media = 0, Desviación estándar = 1
+        datos2 = np.random.normal(5, 2, 1000)  # Media = 5, Desviación estándar = 2
+        plt.figure(figsize=(8, 6))
+        plt.hist(datos1, bins=30, color='blue', edgecolor='black', alpha=0.7, label='Media = 0, Desv = 1')
+        plt.hist(datos2, bins=30, color='red', edgecolor='black', alpha=0.7, label='Media = 5, Desv = 2')
+        plt.title('Histograma de dos distribuciones normales diferentes')
+        plt.xlabel('Valor')
+        plt.ylabel('Frecuencia')
+        plt.legend()
+        plt.grid(True, linestyle='--', alpha=0.6)
+        ruta = "{}punto_17.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
+        
     def punto_18(self):
-        pass
+        bins_values = [10, 50, 100, 200]
+        datos1 = np.random.normal(0, 1, 1000)  # Media = 0, Desviación estándar = 1
+        datos2 = np.random.normal(5, 2, 1000)  # Media = 5, Desviación estándar = 2
+        plt.figure(figsize=(15, 5))
+        for i, bins in enumerate(bins_values):
+            plt.subplot(1, 4, i + 1)
+            plt.hist(datos1, bins=bins, color='blue', edgecolor='black', alpha=0.7)
+            plt.title(f'Histograma con {bins} bins')
+            plt.xlabel('Valor')
+            plt.ylabel('Frecuencia')
+            plt.grid(True, linestyle='--', alpha=0.6)
+        plt.tight_layout()
+        ruta = "{}punto_18.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
     
     def punto_19(self):
-        pass
+        datos1 = np.random.normal(0, 1, 1000)  # Media = 0, Desviación estándar = 1
+        datos2 = np.random.normal(5, 2, 1000)  # Media = 5, Desviación estándar = 2
+        media = np.mean(datos1)
+        plt.figure(figsize=(8, 6))
+        plt.hist(datos1, bins=30, color='blue', edgecolor='black', alpha=0.7)
+        plt.axvline(media, color='red', linestyle='--', linewidth=2, label=f'Media = {media:.2f}')
+        plt.title('Histograma con línea vertical para la media')
+        plt.xlabel('Valor')
+        plt.ylabel('Frecuencia')
+        plt.legend()
+        plt.grid(True, linestyle='--', alpha=0.6)
+        ruta = "{}punto_19.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
     
     def punto_20(self):
-        pass
-    
+        datos1 = np.random.normal(0, 1, 1000)  # Media = 0, Desviación estándar = 1
+        datos2 = np.random.normal(5, 2, 1000)  # Media = 5, Desviación estándar = 2
+        plt.figure(figsize=(8, 6))
+        plt.hist(datos1, bins=30, color='blue', edgecolor='black', alpha=0.5, label='Media = 0,  Desviación= 1')
+        plt.hist(datos2, bins=30, color='red', edgecolor='black', alpha=0.5, label='Media = 5,   Desviación= 2')
+        plt.title('Histogramas superpuestos de dos distribuciones normales')
+        plt.xlabel('Valor')
+        plt.ylabel('Frecuencia')
+        plt.legend()
+        plt.grid(True, linestyle='--', alpha=0.6)
+        ruta = "{}punto_20.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
         
 act = actividad2()
 act.punto_1()
-# act.punto_2()
-# act.punto_3()
-# act.punto_4()
-# act.punto_5()
-# act.punto_6()
-# act.punto_7()
-# act.punto_8()
-# act.punto_9()
-# act.punto_10()
-# act.punto_11()
+act.punto_2()
+act.punto_3()
+act.punto_4()
+act.punto_5()
+act.punto_6()
+act.punto_7()
+act.punto_8()
+act.punto_9()
+act.punto_10()
+act.punto_11()
 act.punto_12()
-# act.punto_13()
-# act.punto_14()
-# act.punto_15()
-# act.punto_16()
-# act.punto_17()
-# act.punto_18()
-# act.punto_19()
-# act.punto_20()
+act.punto_13()
+act.punto_14()
+act.punto_15()
+act.punto_16() 
+act.punto_17()
+act.punto_18()
+act.punto_19()
+act.punto_20()
 
 
