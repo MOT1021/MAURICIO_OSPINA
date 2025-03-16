@@ -5,7 +5,7 @@ import os
 
 class actividad2:
     def __init__(self):
-        Datos=[(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0)]
+        Datos=[(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0),(8,0),(9,0),(10,0)]
         #Datos=[(1,0),(2,0),(3,0),(4,0)(5,0),(6,0),(7,0),(8,0),(9,0),(10,0),(11,0),(12,0),(13,0),(14,0),(15,0),(16,0),(17,0),(18,0),(19,0),(20,0)]
         self.df=pd.DataFrame(data=Datos,columns=["# Ejercicio","valor"])
         
@@ -92,13 +92,33 @@ class actividad2:
         print("se ejecutó - PUNTO 7")
     
     def punto_8(self):
-        pass
+        # Crear un array de ceros de tamaño 10
+        array_zeros = np.zeros(10)
+
+        array_zeros[3:7] = 5
+        print("Array modificado:", array_zeros)
+        self.df.iloc[7,1]= str(array_zeros)
+        self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
+        print("se ejecutó - PUNTO 8")
     
     def punto_9(self):
-        pass
+        # Crear una matriz 3x3
+        matriz_3x3 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        matriz_invertida = matriz_3x3[::-1, :]
+        print("Matriz con filas invertidas:\n", matriz_invertida)
+        self.df.iloc[8,1]= str(matriz_invertida)
+        self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
+        print("se ejecutó - PUNTO 9")
     
     def punto_10(self):
-        pass
+        # Crear un array de números aleatorios de tamaño 10
+        array_random = np.random.rand(10)
+        mayores_05 = array_random[array_random > 0.5]
+        # print( array_random)
+        print("Elementos mayores a 0.5:", mayores_05)
+        self.df.iloc[9,1]= str(mayores_05)
+        self.df.to_excel("src/Ejercicios/Actividad_2.xlsx",index= False )
+        print("se ejecutó - PUNTO 10")
         
     def punto_11(self,num=100):
         x = np.random.rand(num)
@@ -109,8 +129,28 @@ class actividad2:
         print(f"Imagen guardada en: {ruta}")
         
     def punto_12(self):
-        pass
-    
+        # 1. Generar el array x en el rango de -2π a 2π
+        x = np.linspace(-2 * np.pi, 2 * np.pi, 100)
+        ruido = np.random.normal(0, 0.2, size=x.shape)  # Ruido Gaussiano con media 0 y desviación estándar 0.2
+        y_con_ruido = np.sin(x) + ruido
+        y_sin_ruido = np.sin(x)
+        plt.figure(figsize=(10, 6))
+        plt.scatter(x, y_con_ruido, color='blue', label='$y = \sin(x) + \text{ruido}$', alpha=0.6)
+        plt.plot(x, y_sin_ruido, color='red', label='$y = \sin(x)$', linewidth=2)
+
+        # Personalizar el gráfico
+        plt.title('Gráfico de dispersión de $y = \sin(x) + \text{ruido}$ y $y = \sin(x)$')
+        plt.xlabel('$x$')
+        plt.ylabel('$y$')
+        plt.axhline(0, color='black', linewidth=0.5, linestyle='--')  # Línea horizontal en y=0
+        plt.axvline(0, color='black', linewidth=0.5, linestyle='--')  # Línea vertical en x=0
+        plt.grid(True, linestyle='--', alpha=0.6)
+        plt.legend()
+        # plt.show()
+        ruta = "{}punto_12.png".format(self.ruta_act2)
+        plt.savefig(ruta)
+        print(f"Imagen guardada en: {ruta}")
+
     def punto_13(self):
         pass
     
@@ -137,16 +177,25 @@ class actividad2:
     
         
 act = actividad2()
-# act.punto_1()
+act.punto_1()
 # act.punto_2()
 # act.punto_3()
 # act.punto_4()
 # act.punto_5()
 # act.punto_6()
 # act.punto_7()
-act.punto_8()
+# act.punto_8()
 # act.punto_9()
 # act.punto_10()
 # act.punto_11()
+act.punto_12()
+# act.punto_13()
+# act.punto_14()
+# act.punto_15()
+# act.punto_16()
+# act.punto_17()
+# act.punto_18()
+# act.punto_19()
+# act.punto_20()
 
 
