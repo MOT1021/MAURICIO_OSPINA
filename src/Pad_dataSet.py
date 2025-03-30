@@ -99,16 +99,26 @@ class Pad_dataSet:
         plt.show()
         
         
+    def graficos_agrupados(self,df = pd.DataFrame(), lista_columnas=[]):
+        for col in lista_columnas:
+            conteo = df[col].value_counts().sort_index()
+            plt.figure()
+            conteo.plot(kind= "bar")
+            plt.xlabel(col)
+            plt.ylabel("cantidad")
+            plt.show()
+        
+        
         
 
 
-padclase = Pad_dataSet()          
-dataset_path = padclase.download_dataset_zip()
-csv_dir = padclase.extract_zip_files(dataset_path)
-df = padclase.create_csv(csv_dir)
-print(df.describe(),df.count,df.info())
-df.to_csv("dataset_kaggle.csv")
-padclase.grafico_normal(df)
-padclase.grafico_df_xy(df)
-#209306
-#print(df.describe(),df.count,df.info())
+#padclase = Pad_dataSet()          
+# dataset_path = padclase.download_dataset_zip()
+# csv_dir = padclase.extract_zip_files(dataset_path)
+# df = padclase.create_csv(csv_dir)
+# print(df.describe(),df.count,df.info())
+# df.to_csv("dataset_kaggle.csv")
+# padclase.grafico_normal(df)
+# padclase.grafico_df_xy(df)
+# #209306
+# #print(df.describe(),df.count,df.info())
