@@ -63,57 +63,121 @@ class actividad3:
         csv_dir = padclase.extract_zip_files(dataset_path)
         df = padclase.create_csv(csv_dir)
         # print(df.describe(),df.count,df.info())
-        print(df.head())
+        print(df)
         self.df.loc[3,"Resultado"] = "se ejecuto el punto 4 de la actividad 3"
-        self.df.loc[2,"Detalle"] =  "Descarga el dataset 'wine review' desde Kaggle y cárgalo en un DataFrame llamado review, tal y como se muestra en la figura."
+        self.df.loc[3,"Detalle"] =  "Descarga el dataset 'wine review' desde Kaggle y cárgalo en un DataFrame llamado review, tal y como se muestra en la figura."
         print("punto_4") 
         
     def punto_5(self):
-        self.df.loc[4,"Resultado"] = len(self.df)+4
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        # print(df.describe(),df.count,df.info())
+        print(df.head(10))
+        self.df.loc[4,"Resultado"] = "se ejecuto el punto 5 de la actividad 3"
+        self.df.loc[4,"Detalle"] =  "Visualiza las primeras filas del DataFrame"
         print("punto_5") 
         
     def punto_6(self):
-        self.df.loc[5,"Resultado"] = "punto_5.csv"
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        print(df.info())
+        self.df.loc[5,"Resultado"] = "se ejecuto el punto 6 de la actividad 3"
+        self.df.loc[5,"Detalle"] =  "Utiliza el método .info() para averiguar cuántas entradas hay. ¿Cuántas encontraste?"
         print("punto_6") 
         
     def punto_7(self):
-        self.df.loc[6,"Resultado"] = len(self.df)+6
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        precio_promedio = df["price"].mean() 
+        self.df.loc[6,"Resultado"] = f"El precio promedio es: $ {precio_promedio:.2f}"
+        self.df.loc[6,"Detalle"] =  "¿Cuál es el precio promedio?"
+        print(f"El precio promedio es: ${precio_promedio:.2f}")
         print("punto_7") 
         
     def punto_8(self):
-        self.df.loc[7,"Resultado"] = len(self.df)+7
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        precio_max = df["price"].max() 
+        self.df.loc[7,"Resultado"] = f"El precio más alto pagado es: {precio_max}"
+        self.df.loc[7,"Detalle"] =  "¿Cuál es el precio más alto pagado?"
+        print(f"El precio más alto pagado es: ${precio_max}")
         print("punto_8") 
         
     def punto_9(self):
-        self.df.loc[8,"Resultado"] = len(self.df)+8
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        vinos_california = df[df["province"] == "California"]
+        self.df.loc[8,"Resultado"] = "Se ejecuto punto 9 de la actividad 3"
+        self.df.loc[8,"Detalle"] =  "Crea un DataFrame con todos los vinos de california. Salida esperada:"
+
+        # Mostrar las primeras filas del nuevo DataFrame
+        print(vinos_california)
         print("punto_9") 
         
     def punto_10(self):
-        self.df.loc[9,"Resultado"] = len(self.df)+9
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        
+        indice_max_precio = df["price"].idxmax()
+
+        vino_mas_caro = df.loc[indice_max_precio]
+
+        print(vino_mas_caro)
+        
+        self.df.loc[9,"Resultado"] = "Se ejecuto punto 10 de la actividad 3"
+        self.df.loc[9,"Detalle"] =  "Utiliza idxmax() para encontrar el índice del vino con el precio más alto y luego utiliza loc para obtener toda la información de ese vino específico."
         print("punto_10") 
         
     def punto_11(self):
-        self.df.loc[10,"Resultado"] = len(self.df)+10
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)        
+        vinos_california = df[df["province"] == "California"]
+        variedades_comunes = vinos_california["variety"].value_counts()
+        print(variedades_comunes)
+        self.df.loc[10,"Resultado"] = "Se ejecuto punto 11 de la actividad 3"
+        self.df.loc[10,"Detalle"] =  " Cuáles son los tipos de uva más comunes en California? "
         print("punto_11") 
         
     def punto_12(self,num=100):
-        self.df.loc[11,"Resultado"] = len(self.df)+11
-        print("punto_12") 
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)        
+        vinos_california = df[df["province"] == "California"]
+        variedades_comunes = vinos_california["variety"].value_counts()
+        print(variedades_comunes.head(10))
+        self.df.loc[11,"Resultado"] = "Se ejecuto punto 12 de la actividad 3"
+        self.df.loc[11,"Detalle"] =  " ¿Cuáles son los 10 tipos de uva más comunes en California?"
+        print("punto_11") 
         
     
     def ejecutar(self):
-        # self.punto_1()     
-        # self.punto_2() 
-        # self.punto_3() 
+        self.punto_1()     
+        self.punto_2() 
+        self.punto_3() 
         self.punto_4() 
-        # self.punto_5() 
-        # self.punto_6() 
-        # self.punto_7() 
-        # self.punto_8() 
-        # self.punto_9() 
-        # self.punto_10()
-        # self.punto_11()
-        # self.punto_12()
+        self.punto_5() 
+        self.punto_6() 
+        self.punto_7() 
+        self.punto_8() 
+        self.punto_9() 
+        self.punto_10()
+        self.punto_11()
+        self.punto_12()
         self.df.to_csv("actividad3.csv")
         
 act = actividad3()

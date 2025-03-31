@@ -15,9 +15,9 @@ class ACT_3_dataSet:
         pass
         
     def download_dataset_zip(self):
-        print("Descargando dataset desde Kaggle...")
+        # print("Descargando dataset desde Kaggle...")
         dataset_path = kagglehub.dataset_download("zynicide/wine-reviews")
-        print("Ruta al dataset:", dataset_path)
+        # print("Ruta al dataset:", dataset_path)
         return dataset_path
     
     def extract_zip_files(self,dataset_path):
@@ -26,7 +26,7 @@ class ACT_3_dataSet:
             zip_file = os.path.join(dataset_path, zip_files[0])
             extract_dir = os.path.join(dataset_path, "extracted")
             os.makedirs(extract_dir, exist_ok=True)
-            print(f"Extrayendo {zip_file} en {extract_dir}...")
+            # print(f"Extrayendo {zip_file} en {extract_dir}...")
             with zipfile.ZipFile(zip_file, "r") as z:
                 z.extractall(extract_dir)
             return extract_dir
@@ -34,7 +34,7 @@ class ACT_3_dataSet:
             # Si no se encuentra un ZIP, se verifica si existen archivos CSV en la ruta
             csv_files = [f for f in os.listdir(dataset_path) if f.endswith('.csv')]
             if csv_files:
-                print("No se encontró archivo ZIP pero se detectaron archivos CSV; se asume que el dataset ya se encuentra extraído.")
+                # print("No se encontró archivo ZIP pero se detectaron archivos CSV; se asume que el dataset ya se encuentra extraído.")
                 return dataset_path
             else:
                 raise FileNotFoundError("No se encontró ningún archivo .zip ni archivos .csv en la ruta del dataset")
@@ -54,14 +54,14 @@ class ACT_3_dataSet:
 
         for file in csv_files:
             file_path = os.path.join(csv_dir, file)
-            print(f"Leyendo {file_path}...")
+            # print(f"Leyendo {file_path}...")
             try:
                 df = pd.read_csv(file_path, encoding="latin1")
             except Exception as e:
                 print(f"Error al leer {file}: {e}")
                 continue
-            print(f"Creando/actualizando ")
-        print("cvs creado correctamente en ")
+        #     print(f"Creando/actualizando ")
+        # print("cvs creado correctamente en ")
         return df
     
 

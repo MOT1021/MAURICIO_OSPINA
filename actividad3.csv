@@ -1,13 +1,23 @@
 ,Numero_punto,Detalle,Resultado
-0,1,,0
-1,2,,0
-2,3,"Descarga el dataset 'wine review' desde Kaggle y cárgalo en un DataFrame llamado review, tal y como se muestra en la figura.",0
-3,4,,se ejecuto el punto 4 de la actividad 3
-4,5,,0
-5,6,,0
-6,7,,0
-7,8,,0
-8,9,,0
-9,10,,0
-10,11,,0
-11,12,,0
+0,1,Crea un DataFrame frutas que luzca así,"Granadilla,Tomates
+20,50
+"
+1,2, Crea un DataFrame ventas_frutas que coincida con el diagrama,",Granadilla,Tomates
+ventas 2021,20,50
+ventas 2022,49,100
+"
+2,3,Crea una variable utensilios con una Serie que tenga el siguiente aspecto,",Cocina
+Cuchara,3 unidades
+Tenedor,2 unidades
+Cuchillo,4 unidades
+Plato,5 unidades
+"
+3,4,"Descarga el dataset 'wine review' desde Kaggle y cárgalo en un DataFrame llamado review, tal y como se muestra en la figura.",se ejecuto el punto 4 de la actividad 3
+4,5,Visualiza las primeras filas del DataFrame,se ejecuto el punto 5 de la actividad 3
+5,6,Utiliza el método .info() para averiguar cuántas entradas hay. ¿Cuántas encontraste?,se ejecuto el punto 6 de la actividad 3
+6,7,¿Cuál es el precio promedio?,El precio promedio es: $ 33.13
+7,8,¿Cuál es el precio más alto pagado?,El precio más alto pagado es: 2300.0
+8,9,Crea un DataFrame con todos los vinos de california. Salida esperada:,Se ejecuto punto 9 de la actividad 3
+9,10,Utiliza idxmax() para encontrar el índice del vino con el precio más alto y luego utiliza loc para obtener toda la información de ese vino específico.,Se ejecuto punto 10 de la actividad 3
+10,11, Cuáles son los tipos de uva más comunes en California? ,Se ejecuto punto 11 de la actividad 3
+11,12, ¿Cuáles son los 10 tipos de uva más comunes en California?,Se ejecuto punto 12 de la actividad 3
