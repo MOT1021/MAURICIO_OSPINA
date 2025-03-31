@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from Pad_dataSet import Pad_dataSet
+from data_set_act_3 import ACT_3_dataSet
 
 class actividad3:
     def __init__(self):
@@ -57,7 +58,14 @@ class actividad3:
         print("punto_3")
          
     def punto_4(self):
-        self.df.loc[3,"Resultado"] = len(self.df)+3
+        padclase = ACT_3_dataSet()
+        dataset_path = padclase.download_dataset_zip()
+        csv_dir = padclase.extract_zip_files(dataset_path)
+        df = padclase.create_csv(csv_dir)
+        # print(df.describe(),df.count,df.info())
+        print(df.head())
+        self.df.loc[3,"Resultado"] = "se ejecuto el punto 4 de la actividad 3"
+        self.df.loc[2,"Detalle"] =  "Descarga el dataset 'wine review' desde Kaggle y cárgalo en un DataFrame llamado review, tal y como se muestra en la figura."
         print("punto_4") 
         
     def punto_5(self):
@@ -96,8 +104,8 @@ class actividad3:
     def ejecutar(self):
         # self.punto_1()     
         # self.punto_2() 
-        self.punto_3() 
-        # self.punto_4() 
+        # self.punto_3() 
+        self.punto_4() 
         # self.punto_5() 
         # self.punto_6() 
         # self.punto_7() 
