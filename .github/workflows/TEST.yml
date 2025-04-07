@@ -31,8 +31,10 @@ jobs:
         run: python src/Mauricio_Ospina_Actividad_1.py
       - name: paso6 - Ejecutar script 2
         run: python src/Pandas_Actividad_2.py
-      - name: paso7 - Ejecutar script 2
+      - name: paso7 - Ejecutar script 3
         run: python src/Actividad_3.py
+      - name: paso8 - Ejecutar script 4
+        run: python src/Actividad_4_FINAL.ipynb
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
